@@ -164,10 +164,10 @@ if __name__ == '__main__':
 
     # nr of mixtures
 
-    Nsamples = 10
+    Nsamples = 30
 
     # nr of repeats/seeds to be used for mixing
-    seeds = [42, 10000, 192071]
+    seeds = [36, 10000, 193060]
 
 
 
@@ -194,10 +194,11 @@ def generate_random_fractions(ntissues, nfractions):
 nfractions = 10
 fractions = generate_random_fractions(Ntissues, nfractions)
  
-depths = [5000000, 10000000]
+depths = [int(sys.argv[3])]  # Single depth passed from shell 
 
 
-    # changed to:10 fractions * 30 mixtures * 3 repeats * 2 depths = 1980 fake medseq samples
+    # changed to:10 fractions * 30 mixtures * 3 repeats * 1 depths = 1980 fake medseq samples
+# not really sure we'll see
 np.random.seed(104)
 
 # Stop at 10 mixtures
@@ -236,12 +237,12 @@ try:
                     mixedSampleNames.append(sn)
                 # writeToFile(outfile, mixedCounts)
                     counter += 1
-                    if counter == 10:
-                        # 10 mixtures
+                    if counter == 300:
+                        # 300 mixtures
                         raise StopLoop
 
 except StopLoop:
-    print("Stopped after 10")
+    print("Stopped after 300")
 
 with open('/projects/0/AdamsLab/Scripts/afroditi/deconvolutionsimulations/src/python/resources/site2cluster.pkl', 'rb') as f:
     mapping = pickle.load(f)
@@ -256,6 +257,20 @@ df = pd.DataFrame(fakeClusters[:counter], index=mixedSampleNames, columns=geneNa
     # df.to_csv(savePath + 'sim1.csv')
 
     # save in smaller files to be read in parallel more quickly
+#nfiles = 1 + (df.shape[0] // 100)
+#for i in range(nfiles):
+   # df.iloc[i*100:(i+1)*100].to_csv(savePath + 'allCdiffD2' + str(i) + '.csv')
+import os
+
 nfiles = 1 + (df.shape[0] // 100)
+os.makedirs(savePath, exist_ok=True)  # Ensure directory exists
+
 for i in range(nfiles):
-    df.iloc[i*100:(i+1)*100].to_csv(savePath + 'sim1_part' + str(i) + '.csv')
+    try:
+        chunk = df.iloc[i*100:(i+1)*100]
+        filename = f'allCalld_{i}.csv'
+        chunk.to_csv(os.path.join(savePath, filename))
+        print(f"Saved {filename}")
+    except Exception as e:
+        print(f"Failed to save chunk {i}: {e}")
+

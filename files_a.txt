@@ -1,5 +1,10 @@
 {
 "n": "/projects/0/AdamsLab/Data/parkinson/rcsite/temporary-symlinks/neurons/",
 "h": "/projects/0/AdamsLab/Data/parkinson/rcsite/healthy/",
-"m": "/projects/0/AdamsLab/Scripts/afroditi/afroditi/rawFiles/MET/"
+"m": "/projects/0/AdamsLab/Scripts/afroditi/afroditi/rawFiles/mel/",
+"o": "/projects/0/AdamsLab/Scripts/afroditi/afroditi/rawFiles/oligod/",
+"hem": "/gpfs/work4/0/AdamsLab/Scripts/afroditi/afroditi/rawFiles/hema/",
+"c": "/projects/0/AdamsLab/Scripts/afroditi/afroditi/rawFiles/col/",
+"n2": "/gpfs/work4/0/AdamsLab/Scripts/afroditi/afroditi/rawFiles/neuro/"
 }
+

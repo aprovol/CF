@@ -1,5 +1,5 @@
 #!/bin/sh
-#SBATCH -t 00:30:00
+#SBATCH -t 03:00:00
 #SBATCH -p rome
 #SBATCH --nodes 1
 #SBATCH --ntasks 1
@@ -12,6 +12,9 @@
 
 source activate medseq;
 
-python mix_a.py files_a.txt mixout.json/
+for depth in 12000000 15000000; do
+    mkdir -p output/$depth
+    python mix_a.py files_a.txt mixout/$depth $depth
+done
 
 

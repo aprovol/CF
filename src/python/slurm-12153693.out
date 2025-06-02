@@ -1,0 +1,36 @@
+/home/aprovolisianou/miniconda3/envs/frogs/bin/python
+Traceback (most recent call last):
+  File "/gpfs/work4/0/AdamsLab/Scripts/afroditi/afroditi/CF/src/python/new_deco_with_matlab.py", line 129, in <module>
+    fake_df = pd.read_csv(input_csv_path, index_col=0).T
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aprovolisianou/miniconda3/envs/frogs/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aprovolisianou/miniconda3/envs/frogs/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aprovolisianou/miniconda3/envs/frogs/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/aprovolisianou/miniconda3/envs/frogs/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/aprovolisianou/miniconda3/envs/frogs/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/projects/0/AdamsLab/Scripts/afroditi/afroditi/mixout/sim1_part0.csv'
+
+JOB STATISTICS
+==============
+Job ID: 12153693
+Cluster: snellius
+User/Group: aprovolisianou/aprovolisianou
+State: RUNNING
+Nodes: 1
+Cores per node: 24
+CPU Utilized: 00:00:00
+CPU Efficiency: 0.00% of 00:13:12 core-walltime
+Job Wall-clock time: 00:00:33
+Memory Utilized: 0.00 MB
+Memory Efficiency: 0.00% of 10.00 GB (10.00 GB/node)
+WARNING: Efficiency statistics can only be obtained after the job has ended as seff tool is based on the accounting database data.

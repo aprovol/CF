@@ -129,6 +129,7 @@ if __name__ == '__main__':
     fake_df = pd.read_csv(input_csv_path, index_col=0).T
     marker_cols = sampleCountsAutosomal.columns[markerInd]
     fake_markers = fake_df.loc[marker_cols, :]
+    print(fake_markers.shape)
 
     # Start MATLAB and run deconvolve
     eng = matlab.engine.start_matlab()
