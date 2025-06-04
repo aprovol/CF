@@ -237,12 +237,12 @@ try:
                     mixedSampleNames.append(sn)
                 # writeToFile(outfile, mixedCounts)
                     counter += 1
-                    if counter == 300:
-                        # 300 mixtures
+                    if counter == 100:
+                        # 100 mixtures
                         raise StopLoop
 
 except StopLoop:
-    print("Stopped after 300")
+    print("Stopped after 100 for every depth?")
 
 with open('/projects/0/AdamsLab/Scripts/afroditi/deconvolutionsimulations/src/python/resources/site2cluster.pkl', 'rb') as f:
     mapping = pickle.load(f)
@@ -257,20 +257,8 @@ df = pd.DataFrame(fakeClusters[:counter], index=mixedSampleNames, columns=geneNa
     # df.to_csv(savePath + 'sim1.csv')
 
     # save in smaller files to be read in parallel more quickly
-#nfiles = 1 + (df.shape[0] // 100)
-#for i in range(nfiles):
-   # df.iloc[i*100:(i+1)*100].to_csv(savePath + 'allCdiffD2' + str(i) + '.csv')
-import os
-
 nfiles = 1 + (df.shape[0] // 100)
-os.makedirs(savePath, exist_ok=True)  # Ensure directory exists
-
 for i in range(nfiles):
-    try:
-        chunk = df.iloc[i*100:(i+1)*100]
-        filename = f'allCalld_{i}.csv'
-        chunk.to_csv(os.path.join(savePath, filename))
-        print(f"Saved {filename}")
-    except Exception as e:
-        print(f"Failed to save chunk {i}: {e}")
+    df.iloc[i*100:(i+1)*100].to_csv(savePath + 'allcfdepths' + str(i) + '.csv')
+
 
